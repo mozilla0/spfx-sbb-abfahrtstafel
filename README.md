@@ -3,6 +3,9 @@
 Zeigt die nächsten Abfahrten einer Haltestelle des öffentlichen Verkehrs in der Schweiz im Stil der SBB-Anzeigetafeln.
 Daten: [transport.opendata.ch](https://transport.opendata.ch) (anonym, kein API-Key nötig).
 
+<img width="441" height="535" alt="image" src="https://github.com/user-attachments/assets/627622e7-2677-43c2-a4c3-5793c7d1cdb6" />
+<img width="1074" height="1040" alt="image" src="https://github.com/user-attachments/assets/873b7d82-ff3f-4d34-b7a1-7ceb287e1260" />
+
 ## Funktionen
 
 - Haltestelle frei wählbar, mit Prüfung und Vorschlägen im Eigenschaftenfenster
