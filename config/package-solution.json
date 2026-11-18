@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sbb-abfahrtstafel-client-side-solution",
+    "id": "65334d0f-5f6c-464d-9683-67cbec9d1e8a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "Joker IT AG",
+      "websiteUrl": "https://www.joker-it.ch",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.24.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "SBB-Abfahrtstafel für SharePoint"
+      },
+      "longDescription": {
+        "default": "Zeigt die nächsten Abfahrten einer Haltestelle des öffentlichen Verkehrs in der Schweiz (Daten: transport.opendata.ch)."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "SBB-Abfahrtstafel",
+        "description": "Stellt das Webpart «SBB-Abfahrtstafel» bereit.",
+        "id": "2560f1de-bbeb-4f66-bead-be07a86b42fa",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/sbb-abfahrtstafel.sppkg"
+  }
+}
