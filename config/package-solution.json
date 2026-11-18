@@ -3,12 +3,12 @@
   "solution": {
     "name": "sbb-abfahrtstafel-client-side-solution",
     "id": "65334d0f-5f6c-464d-9683-67cbec9d1e8a",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "developer": {
-      "name": "Joker IT AG",
-      "websiteUrl": "https://www.joker-it.ch",
+      "name": "",
+      "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "mpnId": "Undefined-1.24.1"
@@ -29,7 +29,7 @@
         "title": "SBB-Abfahrtstafel",
         "description": "Stellt das Webpart «SBB-Abfahrtstafel» bereit.",
         "id": "2560f1de-bbeb-4f66-bead-be07a86b42fa",
-        "version": "1.0.0.0"
+        "version": "1.1.0.0"
       }
     ]
   },

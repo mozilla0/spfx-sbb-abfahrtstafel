@@ -10,6 +10,8 @@ define([], function() {
     "TitleFieldLabel": "Title (optional)",
     "TitleFieldDescription": "Leave empty to show the name of the stop.",
     "DisplayGroupName": "Display",
+    "LanguageFieldLabel": "Board language",
+    "LanguageAuto": "Automatic (SharePoint language)",
     "LimitFieldLabel": "Number of departures",
     "ViaFieldLabel": "Number of via stops",
     "RefreshFieldLabel": "Refresh (seconds)",
@@ -19,23 +21,6 @@ define([], function() {
     "TransportTram": "Tram",
     "TransportBus": "Bus",
     "TransportShip": "Boat",
-    "TransportCableway": "Cableway",
-    "BoardAriaLabel": "Departure board",
-    "ColTime": "Time",
-    "ColTrain": "Train / Destination",
-    "ColPlatform": "Pl.",
-    "Via": "via",
-    "Direction": "to",
-    "Platform": "platform",
-    "Planned": "planned",
-    "PlatformChanged": "Platform changed",
-    "DelayAria": "{0} minutes late",
-    "Loading": "Loading departures …",
-    "NoStationConfigured": "Please set a stop in the property pane.",
-    "NoDepartures": "No departures found.",
-    "ConnectionError": "Connection error",
-    "UnknownError": "Unknown error",
-    "AutoUpdate": "Auto refresh on",
-    "UpdateFailed": "Refresh failed"
+    "TransportCableway": "Cableway"
   }
 });

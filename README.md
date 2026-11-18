@@ -11,7 +11,7 @@ Daten: [transport.opendata.ch](https://transport.opendata.ch) (anonym, kein API-
 - Linienbezeichnung wie auf den SBB-Anzeigern (IC 21, S31, VAE, Bus 7 …)
 - Verspätungen (+n′) und echte Gleisänderungen (rot blinkend, mit geplantem Gleis im Tooltip)
 - Keine Abfragen, solange der Browser-Tab im Hintergrund ist
-- Texte auf Deutsch (de-CH/de-DE) und Englisch, barrierearme Beschriftung für Screenreader
+- Sprache der Tafel wählbar: Deutsch, Français, Italiano, English oder automatisch (Sprache von SharePoint); Eigenschaftenfenster auf Deutsch/Englisch
 
 ## Entwicklung
 

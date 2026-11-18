@@ -10,6 +10,8 @@ define([], function() {
     "TitleFieldLabel": "Titel (optional)",
     "TitleFieldDescription": "Leer lassen, um den Namen der Haltestelle anzuzeigen.",
     "DisplayGroupName": "Anzeige",
+    "LanguageFieldLabel": "Sprache der Tafel",
+    "LanguageAuto": "Automatisch (Sprache von SharePoint)",
     "LimitFieldLabel": "Anzahl Abfahrten",
     "ViaFieldLabel": "Anzahl Via-Halte",
     "RefreshFieldLabel": "Aktualisierung (Sekunden)",
@@ -19,23 +21,6 @@ define([], function() {
     "TransportTram": "Tram",
     "TransportBus": "Bus",
     "TransportShip": "Schiff",
-    "TransportCableway": "Seilbahn",
-    "BoardAriaLabel": "Abfahrtstafel",
-    "ColTime": "Zeit",
-    "ColTrain": "Zug / Richtung",
-    "ColPlatform": "Gl.",
-    "Via": "via",
-    "Direction": "Richtung",
-    "Platform": "Gleis",
-    "Planned": "geplant",
-    "PlatformChanged": "Gleisänderung",
-    "DelayAria": "{0} Minuten später",
-    "Loading": "Abfahrten werden geladen …",
-    "NoStationConfigured": "Bitte im Eigenschaftenfenster eine Haltestelle festlegen.",
-    "NoDepartures": "Keine Abfahrten gefunden.",
-    "ConnectionError": "Verbindungsfehler",
-    "UnknownError": "Unbekannter Fehler",
-    "AutoUpdate": "Auto-Update aktiv",
-    "UpdateFailed": "Aktualisierung fehlgeschlagen"
+    "TransportCableway": "Seilbahn"
   }
 });

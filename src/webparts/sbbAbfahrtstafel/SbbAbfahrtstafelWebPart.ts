@@ -8,7 +8,8 @@ import {
   PropertyPaneSlider,
   PropertyPaneToggle,
   PropertyPaneCheckbox,
-  PropertyPaneLabel
+  PropertyPaneLabel,
+  PropertyPaneDropdown
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
@@ -16,10 +17,12 @@ import * as strings from 'SbbAbfahrtstafelWebPartStrings';
 import SbbAbfahrtstafel from './components/SbbAbfahrtstafel';
 import type { ISbbAbfahrtstafelProps } from './components/ISbbAbfahrtstafelProps';
 import { TransportService, ALL_TRANSPORTATIONS, type Transportation } from './services/TransportService';
+import { getBoardStrings, type BoardLanguage } from './i18n/boardStrings';
 
 export interface ISbbAbfahrtstafelWebPartProps {
   station: string;
   title: string;
+  language: BoardLanguage;
   limit: number;
   refreshSeconds: number;
   viaCount: number;
@@ -58,6 +61,8 @@ export default class SbbAbfahrtstafelWebPart extends BaseClientSideWebPart<ISbbA
       refreshSeconds: p.refreshSeconds || 30,
       viaCount: p.viaCount ?? 1,
       showClock: p.showClock !== false,
+      // Ohne gespeicherte Einstellung (ältere Instanzen) gilt Deutsch
+      texts: getBoardStrings(p.language || 'de', this.context.pageContext.cultureInfo.currentUICultureName),
       transportations: ALL_TRANSPORTATIONS.filter(t => p[TRANSPORT_PROPS[t]] !== false)
     });
 
@@ -127,6 +132,17 @@ export default class SbbAbfahrtstafelWebPart extends BaseClientSideWebPart<ISbbA
             {
               groupName: strings.DisplayGroupName,
               groupFields: [
+                PropertyPaneDropdown('language', {
+                  label: strings.LanguageFieldLabel,
+                  options: [
+                    { key: 'auto', text: strings.LanguageAuto },
+                    { key: 'de', text: 'Deutsch' },
+                    { key: 'fr', text: 'Français' },
+                    { key: 'it', text: 'Italiano' },
+                    { key: 'en', text: 'English' }
+                  ],
+                  selectedKey: this.properties.language || 'de'
+                }),
                 PropertyPaneSlider('limit', { label: strings.LimitFieldLabel, min: 1, max: 20, step: 1 }),
                 PropertyPaneSlider('viaCount', { label: strings.ViaFieldLabel, min: 0, max: 3, step: 1 }),
                 PropertyPaneSlider('refreshSeconds', { label: strings.RefreshFieldLabel, min: 15, max: 300, step: 15 }),

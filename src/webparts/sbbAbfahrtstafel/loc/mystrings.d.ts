@@ -13,6 +13,8 @@ declare interface ISbbAbfahrtstafelWebPartStrings {
   ViaFieldLabel: string;
   RefreshFieldLabel: string;
   ClockFieldLabel: string;
+  LanguageFieldLabel: string;
+  LanguageAuto: string;
   TransportationsLabel: string;
   TransportTrain: string;
   TransportTram: string;
@@ -20,23 +22,6 @@ declare interface ISbbAbfahrtstafelWebPartStrings {
   TransportShip: string;
   TransportCableway: string;
 
-  BoardAriaLabel: string;
-  ColTime: string;
-  ColTrain: string;
-  ColPlatform: string;
-  Via: string;
-  Direction: string;
-  Platform: string;
-  Planned: string;
-  PlatformChanged: string;
-  DelayAria: string;
-  Loading: string;
-  NoStationConfigured: string;
-  NoDepartures: string;
-  ConnectionError: string;
-  UnknownError: string;
-  AutoUpdate: string;
-  UpdateFailed: string;
 }
 
 declare module 'SbbAbfahrtstafelWebPartStrings' {

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as strings from 'SbbAbfahrtstafelWebPartStrings';
 import styles from './SbbAbfahrtstafel.module.scss';
 import type { ISbbAbfahrtstafelProps } from './ISbbAbfahrtstafelProps';
 import type { IDeparture, IStationboard } from '../services/TransportService';
+import type { IBoardStrings } from '../i18n/boardStrings';
 
 const pad = (n: number): string => (n < 10 ? `0${n}` : String(n));
 const formatTime = (d: Date): string => `${pad(d.getHours())}:${pad(d.getMinutes())}`;
@@ -53,15 +53,15 @@ function useNow(enabled: boolean): Date {
   return now;
 }
 
-const DepartureRow: React.FC<{ dep: IDeparture }> = ({ dep }) => {
+const DepartureRow: React.FC<{ dep: IDeparture; t: IBoardStrings }> = ({ dep, t }) => {
   const platform = dep.changedPlatform ?? dep.platform ?? '–';
   const ariaLabel = [
     formatTime(dep.departure),
     dep.lineLabel,
-    `${strings.Direction} ${dep.destination}`,
-    dep.delay ? strings.DelayAria.replace('{0}', String(dep.delay)) : '',
-    `${strings.Platform} ${platform}`,
-    dep.changedPlatform ? strings.PlatformChanged : ''
+    `${t.direction} ${dep.destination}`,
+    dep.delay ? t.delayAria.replace('{0}', String(dep.delay)) : '',
+    `${t.platform} ${platform}`,
+    dep.changedPlatform ? t.platformChanged : ''
   ].filter(Boolean).join(', ');
 
   return (
@@ -76,14 +76,14 @@ const DepartureRow: React.FC<{ dep: IDeparture }> = ({ dep }) => {
           <span className={`${styles.category} ${categoryClass(dep.category)}`}>{dep.lineLabel}</span>
           {dep.via.length > 0 && (
             <span className={styles.via} title={dep.via.join(' · ')}>
-              {strings.Via} {dep.via.join(' · ')}
+              {t.via} {dep.via.join(' · ')}
             </span>
           )}
         </div>
       </div>
       <div
         className={`${styles.platform} ${dep.changedPlatform ? styles.platformChanged : ''}`}
-        title={dep.changedPlatform ? `${strings.PlatformChanged} (${strings.Planned}: ${dep.platform ?? '–'})` : undefined}
+        title={dep.changedPlatform ? `${t.platformChanged} (${t.planned}: ${dep.platform ?? '–'})` : undefined}
         aria-hidden="true"
       >
         {platform}
@@ -93,7 +93,7 @@ const DepartureRow: React.FC<{ dep: IDeparture }> = ({ dep }) => {
 };
 
 const SbbAbfahrtstafel: React.FC<ISbbAbfahrtstafelProps> = (props) => {
-  const { service, station, title, limit, refreshSeconds, transportations, viaCount, showClock } = props;
+  const { service, station, title, limit, refreshSeconds, transportations, viaCount, showClock, texts: t } = props;
 
   const [board, setBoard] = React.useState<IStationboard | undefined>(undefined);
   const [error, setError] = React.useState<string | undefined>(undefined);
@@ -124,7 +124,7 @@ const SbbAbfahrtstafel: React.FC<ISbbAbfahrtstafelProps> = (props) => {
           return;
         }
         // Bestehende Daten stehen lassen, nur Fehler anzeigen
-        setError((e as Error).message || strings.UnknownError);
+        setError((e as Error).message || t.unknownError);
         console.error('SBB-Abfahrtstafel:', e);
       } finally {
         if (!disposed) {
@@ -165,33 +165,33 @@ const SbbAbfahrtstafel: React.FC<ISbbAbfahrtstafelProps> = (props) => {
 
   let body: React.ReactNode;
   if (!station) {
-    body = <div className={styles.message}>{strings.NoStationConfigured}</div>;
+    body = <div className={styles.message}>{t.noStationConfigured}</div>;
   } else if (loading && !board) {
     body = (
       <div className={styles.message} role="status">
         <div className={styles.dots} aria-hidden="true"><span /><span /><span /></div>
-        {strings.Loading}
+        {t.loading}
       </div>
     );
   } else if (error && !board) {
     body = (
       <div className={`${styles.message} ${styles.error}`} role="alert">
-        <div>⚠️ {strings.ConnectionError}</div>
+        <div>⚠️ {t.connectionError}</div>
         <div className={styles.errorDetail}>{error}</div>
       </div>
     );
   } else if (board && board.departures.length === 0) {
-    body = <div className={styles.message}>{strings.NoDepartures}</div>;
+    body = <div className={styles.message}>{t.noDepartures}</div>;
   } else {
     body = (
       <ul className={styles.list}>
-        {board?.departures.map(d => <DepartureRow key={d.key} dep={d} />)}
+        {board?.departures.map(d => <DepartureRow key={d.key} dep={d} t={t} />)}
       </ul>
     );
   }
 
   return (
-    <section className={styles.board} aria-label={`${strings.BoardAriaLabel} ${heading}`}>
+    <section className={styles.board} aria-label={`${t.boardAriaLabel} ${heading}`}>
       <header className={styles.header}>
         <div className={styles.logo}>
           <span className={styles.logoBox}>SBB CFF FFS</span>
@@ -200,10 +200,10 @@ const SbbAbfahrtstafel: React.FC<ISbbAbfahrtstafelProps> = (props) => {
         {showClock && <div className={styles.clock} aria-hidden="true">{formatTime(now)}</div>}
       </header>
 
-      <div className={styles.columns} aria-hidden="true">
-        <div>{strings.ColTime}</div>
-        <div>{strings.ColTrain}</div>
-        <div className={styles.center}>{strings.ColPlatform}</div>
+      <div className={styles.boardHead} aria-hidden="true">
+        <div>{t.colTime}</div>
+        <div>{t.colTrain}</div>
+        <div className={styles.center}>{t.colPlatform}</div>
       </div>
 
       {body}
@@ -211,7 +211,7 @@ const SbbAbfahrtstafel: React.FC<ISbbAbfahrtstafelProps> = (props) => {
       <footer className={styles.footer}>
         <div className={styles.autoRefresh}>
           <span className={`${styles.indicator} ${error ? styles.indicatorError : ''}`} />
-          <span>{error && board ? strings.UpdateFailed : strings.AutoUpdate}</span>
+          <span>{error && board ? t.updateFailed : t.autoUpdate}</span>
         </div>
         <div>{lastUpdate ? formatTime(lastUpdate) : '--:--'}</div>
       </footer>

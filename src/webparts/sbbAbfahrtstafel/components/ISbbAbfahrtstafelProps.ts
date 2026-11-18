@@ -1,4 +1,5 @@
 import type { TransportService, Transportation } from '../services/TransportService';
+import type { IBoardStrings } from '../i18n/boardStrings';
 
 export interface ISbbAbfahrtstafelProps {
   service: TransportService;
@@ -10,4 +11,6 @@ export interface ISbbAbfahrtstafelProps {
   transportations: Transportation[];
   viaCount: number;
   showClock: boolean;
+  /** Texte der Tafel in der gewählten Sprache */
+  texts: IBoardStrings;
 }

@@ -11,10 +11,10 @@
 
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
-    "group": { "default": "Advanced", "de-DE": "Erweitert", "de-CH": "Erweitert" },
-    "title": { "default": "SBB departure board", "de-DE": "SBB-Abfahrtstafel", "de-CH": "SBB-Abfahrtstafel" },
+    "group": { "default": "Erweitert", "de-DE": "Erweitert", "de-CH": "Erweitert" },
+    "title": { "default": "SBB-Abfahrtstafel", "de-DE": "SBB-Abfahrtstafel", "de-CH": "SBB-Abfahrtstafel" },
     "description": {
-      "default": "Next departures of a Swiss public transport stop",
+      "default": "Nächste Abfahrten einer Haltestelle des öffentlichen Verkehrs",
       "de-DE": "Nächste Abfahrten einer Haltestelle des öffentlichen Verkehrs",
       "de-CH": "Nächste Abfahrten einer Haltestelle des öffentlichen Verkehrs"
     },
@@ -22,6 +22,7 @@
     "properties": {
       "station": "Arth-Goldau",
       "title": "",
+      "language": "de",
       "limit": 5,
       "refreshSeconds": 30,
       "viaCount": 1,
